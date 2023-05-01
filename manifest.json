@@ -9,8 +9,7 @@
     "content_scripts": [
       {
         "matches": [
-          "https://www.bing.com/search?q=Bing+AI&showconv=1&FORM=hpcodx",
-          "edge://discover-chat"
+          "https://www.bing.com/search?q=Bing+AI&showconv=1&FORM=hpcodx"
         ],
         "js": ["content.js"]
       }

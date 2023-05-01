@@ -2,7 +2,9 @@ function updateMaxLength() {
     const searchbox = document.querySelector("#searchbox");
     if (searchbox) {
       searchbox.setAttribute("maxlength", "200000");
+      return true;
     }
+    return false;
   }
   
   function selectCreative() {
@@ -10,17 +12,28 @@ function updateMaxLength() {
     for (const label of labels) {
       if (label.textContent === "Creative") {
         label.click();
-        break;
+        return true;
       }
     }
+    return false;
   }
   
-  function onPageLoad() {
-    
-    selectCreative();
-    updateMaxLength();
-    
+  function observeDOMChanges() {
+    const observer = new MutationObserver((mutations) => {
+        let creativeSelected = selectCreative();
+        let maxLengthUpdated = updateMaxLength();
+      
+  
+      if (maxLengthUpdated && creativeSelected) {
+        observer.disconnect();
+      }
+    });
+  
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
   }
   
-  window.addEventListener("load", onPageLoad);
+  observeDOMChanges();
   
