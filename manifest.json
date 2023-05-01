@@ -1,0 +1,19 @@
+{
+    "manifest_version": 3,
+    "name": "Bing Max Length",
+    "version": "1.0",
+    "description": "Set maxlength to 200000 in Bing AI searchbox",
+    "permissions": [
+      "activeTab"
+    ],
+    "content_scripts": [
+      {
+        "matches": [
+          "https://www.bing.com/search?q=Bing+AI&showconv=1&FORM=hpcodx",
+          "edge://discover-chat"
+        ],
+        "js": ["content.js"]
+      }
+    ]
+  }
+  
